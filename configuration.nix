@@ -1,5 +1,10 @@
-{ config, lib, pkgs, ... }: {
-  
+{ config, lib, pkgs, ... }:
+
+{
+  imports = [
+    ./zsh.nix
+  ];
+ 
   users.groups.niels = {};
   users.users = {
     niels = {
@@ -27,6 +32,8 @@
   networking.firewall.allowedTCPPorts = [ 22 ];
   environment.systemPackages = with pkgs; [
     htop
+    vim
+    # home-manager
   ];
 
   system.stateVersion = "24.11";
